@@ -267,10 +267,10 @@
                     <h2>Terkasih Kepada</h2>
                     <p class="quote" style="font-style:normal;">Dengan penuh cinta, kami ingin memperkenalkan para sahabat yang akan berdiri di samping kami di hari bahagia ini.</p>
                     <div class="party-container">
-                        <div class="party-member"><img src="https://images.pexels.com/photos/3777946/pexels-photo-3777946.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Bridesmaid 1"><h4>Rina Wulandari</h4><p>Bridesmaid</p></div>
-                        <div class="party-member"><img src="https://images.pexels.com/photos/3771836/pexels-photo-3771836.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Bridesmaid 2"><h4>Siti Nurhaliza</h4><p>Bridesmaid</p></div>
-                        <div class="party-member"><img src="https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Groomsman 1"><h4>Budi Santoso</h4><p>Groomsman</p></div>
-                        <div class="party-member"><img src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Groomsman 2"><h4>Agus Permana</h4><p>Groomsman</p></div>
+                        <div class="party-member"><img src="https://images.pexels.com/photos/3777946/pexels-photo-3777946.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Bridesmaid 1"><h4>Cenot</h4><p>Bridesmaid</p></div>
+                        <div class="party-member"><img src="https://images.pexels.com/photos/3771836/pexels-photo-3771836.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Bridesmaid 2"><h4>Siti</h4><p>Bridesmaid</p></div>
+                        <div class="party-member"><img src="https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Groomsman 1"><h4>Santi</h4><p>Groomsman</p></div>
+                        <div class="party-member"><img src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Groomsman 2"><h4>Agus</h4><p>Groomsman</p></div>
                     </div>
                 </div>
             </section>
@@ -375,6 +375,21 @@
                     <a href="#" target="_blank" class="cta-button"><i class="fas fa-video" style="margin-right: 8px; font-size: 1rem; display: inline;"></i> Tonton Live Streaming</a>
                 </div>
             </section>
+            
+            <!-- Section 11: Guestbook -->
+            <section id="guestbook" class="content-section">
+                <div class="container">
+                    <i class="fas fa-comments icon-accent"></i>
+                    <h2>Ucapan & Doa Tamu</h2>
+                    <p>Berikan ucapan atau doa terbaik Anda untuk kedua mempelai di bawah ini.</p>
+                    <form id="guestbook-form" style="max-width:500px;margin:30px auto 0 auto;display:flex;flex-direction:column;gap:15px;">
+                        <input type="text" id="guestbook-name" placeholder="Nama Anda" required style="padding:10px 15px;border-radius:8px;border:1px solid #ccc;font-size:1rem;">
+                        <textarea id="guestbook-message" placeholder="Ucapan atau doa..." required rows="3" style="padding:10px 15px;border-radius:8px;border:1px solid #ccc;font-size:1rem;"></textarea>
+                        <button type="submit" class="cta-button">Kirim Ucapan</button>
+                    </form>
+                    <div id="guestbook-list" style="margin-top:40px;text-align:left;max-width:600px;margin-left:auto;margin-right:auto;"></div>
+                </div>
+            </section>
         </main>
 
         <footer class="content-section">
@@ -448,6 +463,53 @@
             }
         });
         function copyToClipboard(text) { navigator.clipboard.writeText(text).then(() => alert('Nomor rekening berhasil disalin!')).catch(err => alert('Gagal menyalin.')); }
+
+        // Guestbook logic
+        function renderGuestbook() {
+            const list = document.getElementById('guestbook-list');
+            const data = JSON.parse(localStorage.getItem('guestbook') || '[]');
+            if (!list) return;
+            if (data.length === 0) {
+                list.innerHTML = '<p style="text-align:center;color:#aaa;">Belum ada ucapan. Jadilah yang pertama!</p>';
+                return;
+            }
+            list.innerHTML = data.map((item, idx) => `
+                <div class="guestbook-item" data-idx="${idx}" style="background:rgba(255,255,255,0.8);border-radius:10px;padding:15px 20px 15px 20px;margin-bottom:15px;box-shadow:0 2px 8px rgba(0,0,0,0.04);position:relative;">
+                    <button class="guestbook-delete" title="Hapus ucapan" style="position:absolute;top:8px;right:10px;background:none;border:none;color:#c00;font-size:1.2rem;cursor:pointer;font-weight:bold;">&times;</button>
+                    <strong style="color:var(--primary-color);font-size:1.1rem;">${item.name}</strong><br>
+                    <span style="font-size:1rem;">${item.message}</span>
+                </div>
+            `).join('');
+            // Tambahkan event listener untuk tombol hapus
+            list.querySelectorAll('.guestbook-delete').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    const idx = parseInt(this.closest('.guestbook-item').getAttribute('data-idx'));
+                    const data = JSON.parse(localStorage.getItem('guestbook') || '[]');
+                    data.splice(idx, 1);
+                    localStorage.setItem('guestbook', JSON.stringify(data));
+                    renderGuestbook();
+                });
+            });
+        }
+        const guestbookForm = document.getElementById('guestbook-form');
+        if (guestbookForm) {
+            guestbookForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const name = document.getElementById('guestbook-name').value.trim();
+                const message = document.getElementById('guestbook-message').value.trim();
+                if (!name || !message) return;
+                const data = JSON.parse(localStorage.getItem('guestbook') || '[]');
+                data.unshift({ name, message });
+                localStorage.setItem('guestbook', JSON.stringify(data));
+                guestbookForm.reset();
+                renderGuestbook();
+            });
+            renderGuestbook();
+        }
     </script>
+    <div style="position:fixed;bottom:10px;left:10px;z-index:11000;font-size:0.95rem;color:#888;font-family:'Poppins',sans-serif;opacity:0.85;pointer-events:auto;">
+      Created by <strong>
+        <a href="https://portofolio-wahyu-trianto.vercel.app/" target="_blank" style="color:inherit;text-decoration:none;">Wahyu Trianto</a></strong>
+    </div>
 </body>
 </html>
