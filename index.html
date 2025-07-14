@@ -1,1 +1,177 @@
-<h1> F&F </h1>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Undangan Pernikahan - Wahyu & Devina</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow-x: hidden;
+      font-family: 'Playfair Display', serif;
+      background: #000;
+      color: #fff;
+    }
+
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: linear-gradient(180deg, #1a1a1a 0%, #3c2b30 100%);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 5rem 2rem;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 3rem 2rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 4rem;
+      margin-bottom: 0.5rem;
+      color: #ffdee9;
+      text-shadow: 2px 2px 5px #000;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: normal;
+      margin-bottom: 2rem;
+    }
+
+    .names {
+      font-size: 2.5rem;
+      font-family: 'Great Vibes', cursive;
+      margin: 1rem 0;
+      color: #fff;
+    }
+
+    .quote, .love-story, .footer, .schedule {
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    ul {
+      padding-left: 1rem;
+      text-align: left;
+    }
+
+    .footer {
+      font-size: 1rem;
+      text-align: center;
+      margin-top: 2rem;
+      color: #ddd;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2.5rem; }
+      .names { font-size: 2rem; }
+      .card { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Animated background with particles -->
+  <div id="particles-js"></div>
+
+  <div class="container">
+    <div class="card" style="animation-delay: 0s;">
+      <h1>Undangan Pernikahan</h1>
+      <h2>Dengan kerendahan hati kami mengundang Anda...</h2>
+      <div class="names">Wahyu Trianto & Devina Ardelia</div>
+    </div>
+
+    <div class="card" style="animation-delay: 0.2s;">
+      <h3 style="margin-bottom:1rem;">Cerita Kami</h3>
+      <div class="love-story">
+        Dalam semesta yang begitu luas, dua jiwa ini dipertemukan bukan karena kebetulan. Mereka menyatu dalam kisah panjang tentang penantian, pengorbanan, dan keyakinan. 
+        Dari percikan pertama yang sederhana, tumbuhlah cinta yang kuat — mengakar dalam doa, mengalir dalam perjuangan.
+        <br><br>
+        Kini, di bawah langit yang sama, mereka bersumpah untuk saling menjaga, mencintai, dan melengkapi. 
+        Sebuah perjalanan baru akan dimulai — bukan sebagai dua insan yang berbeda, tetapi sebagai satu hati yang dipersatukan oleh takdir.
+      </div>
+    </div>
+
+    <div class="card" style="animation-delay: 0.4s;">
+      <h3>Hari Bahagia Kami</h3>
+      <div class="quote">
+        <strong>Minggu, 1 Desember 2025</strong><br>
+        10.00 WIB - selesai<br>
+        Gedung Graha Cinta Kasih, Yogyakarta
+      </div>
+      <div class="schedule">
+        <ul>
+          <li>09.30 - Kedatangan Tamu</li>
+          <li>10.00 - Akad Nikah</li>
+          <li>11.30 - Resepsi</li>
+          <li>13.00 - Ramah Tamah & Hiburan</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card" style="animation-delay: 0.6s;">
+      <h3>Penutup</h3>
+      <div class="footer">
+        Doakan kami agar pernikahan ini menjadi awal dari kehidupan yang penuh cinta, keberkahan, dan kesabaran. 
+        Kehadiran Anda merupakan doa yang tak ternilai bagi kami.
+        <br><br>
+        <em>“Dan di antara tanda-tanda kekuasaan-Nya adalah Dia menciptakan untukmu pasangan hidup agar kamu merasa tenteram di sisinya.”<br>(QS. Ar-Rum: 21)</em>
+        <br><br>
+        Hormat kami yang berbahagia,<br><strong>Wahyu & Devina</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- Particle JS Config -->
+  <script>
+    particlesJS("particles-js", {
+      "particles": {
+        "number": { "value": 60, "density": { "enable": true, "value_area": 800 }},
+        "color": { "value": "#ffffff" },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.5 },
+        "size": { "value": 2 },
+        "move": {
+          "enable": true,
+          "speed": 1,
+          "direction": "bottom",
+          "out_mode": "out"
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": { "enable": false },
+          "onclick": { "enable": false }
+        }
+      },
+      "retina_detect": true
+    });
+  </script>
+</body>
+</html>
