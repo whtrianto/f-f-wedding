@@ -263,44 +263,48 @@
             #cover h1, #hero h1 { font-size: 3.5rem; } h2 { font-size: 3rem; }
             #cover #guest-name { font-size: 1.2rem; }
             #hero p { text-align: center; font-size: 1.1rem; line-height: 1.8; padding: 0 20px; }
-            /* Perbaikan untuk animasi mobile */
-            .content-section { will-change: auto; transform: none !important; }
-            .content-section.visible { transform: none !important; }
-            /* Nonaktifkan animasi yang menyebabkan layout shift di mobile */
-            .content-section.visible h2,
-            .content-section.visible .icon-accent,
-            .content-section.visible p,
-            .content-section.visible .couple-profile,
-            .content-section.visible .party-member,
-            .content-section.visible .timeline-item,
-            .content-section.visible .event-card,
-            .content-section.visible .info-card,
-            .content-section.visible .time-box,
-            .content-section.visible .rsvp-card,
-            .content-section.visible .gift-card,
-            .content-section.visible .vow,
-            .content-section.visible .slider-container,
-            .content-section.visible #guestbook-form,
-            .content-section.visible #guestbook-list {
-                animation: none !important;
-                opacity: 1 !important;
-                transform: none !important;
-            }
-            /* Optimasi hover effects untuk mobile */
-            h2:hover, h3:hover,
-            .icon-accent:hover,
-            .quote:hover,
-            .couple-profile:hover,
-            .party-member:hover,
-            .timeline-content:hover,
-            .event-card:hover, .info-card:hover, .rsvp-card:hover, .gift-card:hover,
-            .time-box:hover,
-            .slider-nav:hover,
-            .dot:hover,
-            .guestbook-item:hover,
-            .guestbook-delete:hover {
-                transform: none !important;
-            }
+            /* Optimasi animasi untuk mobile - lebih sederhana dan smooth */
+            .content-section.visible h2 { animation: fadeInUp 1.5s ease-out; }
+            .content-section.visible .icon-accent { animation: scaleIn 1.5s ease-out 0.3s both; }
+            .content-section.visible p { animation: fadeInUp 1.5s ease-out 0.6s both; }
+            /* Animasi couple profile untuk mobile */
+            .content-section.visible .couple-profile:nth-child(1) { animation: fadeInUp 1.5s ease-out 0.4s both; }
+            .content-section.visible .couple-profile:nth-child(2) { animation: fadeInUp 1.5s ease-out 0.6s both; }
+            /* Animasi wedding party untuk mobile */
+            .content-section.visible .party-member:nth-child(1) { animation: fadeInUp 1.2s ease-out 0.2s both; }
+            .content-section.visible .party-member:nth-child(2) { animation: fadeInUp 1.2s ease-out 0.4s both; }
+            .content-section.visible .party-member:nth-child(3) { animation: fadeInUp 1.2s ease-out 0.6s both; }
+            .content-section.visible .party-member:nth-child(4) { animation: fadeInUp 1.2s ease-out 0.8s both; }
+            /* Animasi timeline untuk mobile */
+            .content-section.visible .timeline-item { animation: fadeInUp 1.5s ease-out 0.4s both; }
+            /* Animasi cards untuk mobile */
+            .content-section.visible .event-card:nth-child(1) { animation: fadeInUp 1.5s ease-out 0.3s both; }
+            .content-section.visible .event-card:nth-child(2) { animation: fadeInUp 1.5s ease-out 0.6s both; }
+            .content-section.visible .info-card:nth-child(1) { animation: fadeInUp 1.5s ease-out 0.3s both; }
+            .content-section.visible .info-card:nth-child(2) { animation: fadeInUp 1.5s ease-out 0.6s both; }
+            /* Animasi countdown untuk mobile */
+            .content-section.visible .time-box:nth-child(1) { animation: fadeInUp 1.2s ease-out 0.2s both; }
+            .content-section.visible .time-box:nth-child(2) { animation: fadeInUp 1.2s ease-out 0.4s both; }
+            .content-section.visible .time-box:nth-child(3) { animation: fadeInUp 1.2s ease-out 0.6s both; }
+            .content-section.visible .time-box:nth-child(4) { animation: fadeInUp 1.2s ease-out 0.8s both; }
+            /* Animasi RSVP dan gift untuk mobile */
+            .content-section.visible .rsvp-card { animation: fadeInUp 1.5s ease-out 0.3s both; }
+            .content-section.visible .gift-card { animation: fadeInUp 1.5s ease-out 0.6s both; }
+            /* Animasi vows untuk mobile */
+            .content-section.visible .vow:nth-child(1) { animation: fadeInUp 1.5s ease-out 0.4s both; }
+            .content-section.visible .vow:nth-child(2) { animation: fadeInUp 1.5s ease-out 0.8s both; }
+            /* Animasi gallery dan guestbook untuk mobile */
+            .content-section.visible .slider-container { animation: scaleIn 1.5s ease-out 0.4s both; }
+            .content-section.visible #guestbook-form { animation: fadeInUp 1.5s ease-out 0.3s both; }
+            .content-section.visible #guestbook-list { animation: fadeInUp 1.5s ease-out 0.6s both; }
+            /* Optimasi hover effects untuk mobile - lebih subtle */
+            h2:hover, h3:hover { transform: none; }
+            .icon-accent:hover { transform: scale(1.05); }
+            .couple-profile:hover { transform: translateY(-2px); }
+            .party-member:hover { transform: translateY(-2px); }
+            .event-card:hover, .info-card:hover, .rsvp-card:hover, .gift-card:hover { transform: translateY(-3px); }
+            .time-box:hover { transform: scale(1.02); }
+            .guestbook-item:hover { transform: translateY(-1px); }
             /* Pastikan elemen tidak bergerak saat hover di mobile */
             .couple-profile img,
             .party-member img {
