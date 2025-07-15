@@ -263,6 +263,53 @@
             #cover h1, #hero h1 { font-size: 3.5rem; } h2 { font-size: 3rem; }
             #cover #guest-name { font-size: 1.2rem; }
             #hero p { text-align: center; font-size: 1.1rem; line-height: 1.8; padding: 0 20px; }
+            /* Perbaikan untuk animasi mobile */
+            .content-section { will-change: auto; transform: none !important; }
+            .content-section.visible { transform: none !important; }
+            /* Nonaktifkan animasi yang menyebabkan layout shift di mobile */
+            .content-section.visible h2,
+            .content-section.visible .icon-accent,
+            .content-section.visible p,
+            .content-section.visible .couple-profile,
+            .content-section.visible .party-member,
+            .content-section.visible .timeline-item,
+            .content-section.visible .event-card,
+            .content-section.visible .info-card,
+            .content-section.visible .time-box,
+            .content-section.visible .rsvp-card,
+            .content-section.visible .gift-card,
+            .content-section.visible .vow,
+            .content-section.visible .slider-container,
+            .content-section.visible #guestbook-form,
+            .content-section.visible #guestbook-list {
+                animation: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+            /* Optimasi hover effects untuk mobile */
+            h2:hover, h3:hover,
+            .icon-accent:hover,
+            .quote:hover,
+            .couple-profile:hover,
+            .party-member:hover,
+            .timeline-content:hover,
+            .event-card:hover, .info-card:hover, .rsvp-card:hover, .gift-card:hover,
+            .time-box:hover,
+            .slider-nav:hover,
+            .dot:hover,
+            .guestbook-item:hover,
+            .guestbook-delete:hover {
+                transform: none !important;
+            }
+            /* Pastikan elemen tidak bergerak saat hover di mobile */
+            .couple-profile img,
+            .party-member img {
+                transform: none !important;
+            }
+            .couple-profile:hover img,
+            .party-member:hover img {
+                transform: none !important;
+            }
             .couple-container::before { content: '\f004'; font-family: 'Font Awesome 6 Free'; font-weight: 900; font-size: 2rem; position: static; transform: none; display: block; margin: 20px 0; order: 1; }
             .couple-profile { order: 0; }
             .couple-profile.groom { order: 2; }
